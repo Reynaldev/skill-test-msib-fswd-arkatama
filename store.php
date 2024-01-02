@@ -3,7 +3,7 @@
 require("config.php");
 
 // Pattern untuk mencari angka tahun
-$reg_age = "/[0-9]/";
+$reg_age = "/[0-9]/m";
 // Pattern untuk mencari kata tahun/thn/th. case-insensitivity
 $reg_age_omit = "/tahun|thn|th/i";
 
@@ -21,7 +21,7 @@ $city = trim(strtoupper($str[1]));
 // Ambil umur dengan menjadikan panjang nama dan posisi index awal kota sebagai patokan
 $age_start = strpos($data, $name) + strlen($name);
 $age_end = strpos($data, $city);
-$age = substr($data, $age_start, $age_end - $age_start);
+$age = substr($data, $age_start, $age_end - strlen($city));
 
 // echo "Name: $name";
 // echo "<br>";
